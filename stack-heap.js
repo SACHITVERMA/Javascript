@@ -36,3 +36,7 @@ console.log(anothername.first + " " + anothername.last); //Ram Kumar
 anothername.first = "Shyam";
 console.log(name.first + " " + name.last); //Shyam Kumar
 console.log(anothername.first + " " + anothername.last); //Shyam Kumar
+
+
+//--------------------------------------
+
