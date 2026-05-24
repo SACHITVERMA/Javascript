@@ -3,7 +3,6 @@ div1.setAttribute("id", "myDiv");
 div1.innerHTML = "Hello User";
 div1.style.backgroundColor = "black";
 div1.style.fontSize = "45px";
-div1.style.textAlign = "center";
 div1.style.color = "white";
 
 document.body.appendChild(div1);

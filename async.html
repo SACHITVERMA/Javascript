@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asynchronous concepts</title>
+  </head>
+  <body>
+    <h1 style="text-align: center">Asynchronous concepts</h1>
+    <div
+      class="outerdiv"
+      style="
+        border: 1px solid black;
+        background-color: aqua;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      "
+    >
+      <div
+        class="innerdiv"
+        style="display: flex; flex-direction: row; gap: 40px"
+      >
+        <button
+          id="btn1"
+          style="
+            background-color: yellowgreen;
+            border-radius: 10px;
+            min-height: 40px;
+            width: 100px;
+            cursor: pointer;
+          "
+        >
+          start
+        </button>
+        <button
+          id="btn2"
+          style="
+            background-color: lightcoral;
+            border-radius: 10px;
+            min-height: 40px;
+            width: 100px;
+            cursor: pointer;
+          "
+        >
+          stop
+        </button>
+      </div>
+    </div>
+  </body>
+  <script>
+    const btn1 = document.getElementById("btn1");
+    const btn2 = document.getElementById("btn2");
+
+    let set1;
+    btn1.addEventListener("click", () => {
+      set1 = setInterval(() => {
+        let count = "#"; // ✅ Har baar fresh start
+        for (let i = 0; i < 6; i++) {
+          count += Math.floor(Math.random() * 16).toString(16);
+        }
+        console.log(count);
+        document.body.style.backgroundColor = count;
+      });
+    });
+
+    btn2.addEventListener("click", () => {
+      clearInterval(set1);
+      document.body.style.backgroundColor = "aqua";
+    });
+  </script>
+</html>
