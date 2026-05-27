@@ -45,28 +45,44 @@
 
 // 3rd way to declare a promises
 
-const mypromise = new Promise((resolve, reject) => {
-  let data = fetch("https://api.github.com/users/Sachitverma");
-  let data2 = data.json(); // Simulating a failed fetch operation
-  //   let data = true; // Simulating a failed fetch operation
-  if (!data) {
-    reject("Error fetching data");
-  } else {
-    resolve(data2); // Promise is fulfilled
+// const mypromise = new Promise((resolve, reject) => {
+//   let data = fetch("https://api.github.com/users/Sachitverma");
+//   let data2 = data.json(); // Simulating a failed fetch operation
+//   //   let data = true; // Simulating a failed fetch operation
+//   if (!data) {
+//     reject("Error fetching data");
+//   } else {
+//     resolve(data2); // Promise is fulfilled
+//   }
+// });
+
+// mypromise
+//   .then((userdata) => {
+//     // console.log(userdata); // Yahan aapko fetch se milne wala response object milega
+//     // return userdata.json(); // JSON mein convert karna zaroori hai
+//     console.log(userdata); // Yahan aapko fetch se milne wala response object milega
+//   })
+// .then((jsondata) => {
+//   // console.log(jsondata);
+
+//   console.log(jsondata.name); // Ab yahan aapka actual GitHub profile data print hoga
+// })
+// .catch((error) => {
+//   console.log(error);
+// });
+
+// async await is a syntactic sugar over promises, it makes the code look cleaner and easier to read. It allows us to write asynchronous code in a synchronous manner.
+
+//  async function declaration
+
+(async function fetchData() {
+  try {
+    const response = await fetch("https://api.github.com/users/Sachitverma");
+
+    console.log(response);
+    const userdata = await response.json();
+    console.log(userdata);
+  } catch (error) {
+    console.log("Error fetching data:", error);
   }
-});
-
-mypromise
-  .then((userdata) => {
-    // console.log(userdata); // Yahan aapko fetch se milne wala response object milega
-    // return userdata.json(); // JSON mein convert karna zaroori hai
-    console.log(userdata); // Yahan aapko fetch se milne wala response object milega
-  })
-  //   .then((jsondata) => {
-  //     // console.log(jsondata);
-
-  //     console.log(jsondata.name); // Ab yahan aapka actual GitHub profile data print hoga
-  //   })
-  .catch((error) => {
-    console.log(error);
-  });
+})();
